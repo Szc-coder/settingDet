@@ -1,0 +1,14 @@
+mode: paddle
+draw_threshold: 0.5
+metric: KeyPointTopDownCOCOEval
+use_dynamic_shape: false
+arch: HRNet
+min_subgraph_size: 3
+Preprocess:
+- trainsize:
+  - 96
+  - 128
+  type: TopDownEvalAffine
+- type: Permute
+label_list:
+- keypoint
