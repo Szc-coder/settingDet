@@ -333,8 +333,12 @@ def Head_Sitting(left_shoulder, right_shoulder, head_top):
     head_top: 头顶
     设定角度阈值为10度，即头部偏离垂直线角度超过20度为头部倾斜
     """
-    center_point = Center_Point(left_shoulder, right_shoulder)
-    head_angle = Cal_Ang(head_top, center_point, right_shoulder)
+    try:
+        center_point = Center_Point(left_shoulder, right_shoulder)
+        head_angle = Cal_Ang(head_top, center_point, right_shoulder)
+    except Exception:
+        return False
+
     if head_angle <= 80 or head_angle >= 100:
         return True
     else:
@@ -345,7 +349,10 @@ def shoulder_tilt(left_shoulder, right_shoulder):
     """
     将头顶到脖子的距离和脖子到胸腔的距离进行比较
     """
-    angle = np.rad2deg(np.arctan2(left_shoulder[1] - right_shoulder[1], left_shoulder[-1] - right_shoulder[0]))
+    try:
+        angle = np.rad2deg(np.arctan2(left_shoulder[1] - right_shoulder[1], left_shoulder[-1] - right_shoulder[0]))
+    except Exception:
+        return False
     if angle > 10 or angle < -10:
         return True
     else:
