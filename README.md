@@ -11,5 +11,5 @@ cuda 10.2\
 python 3.7
 # 文件
 source -- paddleDet提供的python推理工具\
-detModel -- PP-TinyPose的推理模型
+detModel -- PP-TinyPose的推理模型\
 video_process --程序入口
